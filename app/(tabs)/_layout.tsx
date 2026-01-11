@@ -1,24 +1,29 @@
+import useTheme from "@/hooks/useTheme";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 
 const TabsLayout = () => {
+  const {theme} = useTheme();
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "#1e293b",
+          backgroundColor: theme.surface,
           height: 90,
           paddingBottom: 30,
           paddingTop: 10,
+          borderTopWidth: 1,
+          borderTopColor: theme.border
         },
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: "600",
         },
-        tabBarActiveTintColor: "#fbbf24",
-        tabBarInactiveTintColor: "#64748b",
+        tabBarActiveTintColor: theme.primary,
+        tabBarInactiveTintColor: theme.textMuted,
       }}
     >
       <Tabs.Screen
