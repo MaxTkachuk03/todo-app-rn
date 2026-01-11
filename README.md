@@ -1,3 +1,11 @@
+🎯 Tech Stack
+
+* React Native
+
+* Expo
+
+* Convex
+
 🧑‍🍳 App Features Overview
 
 * 📝 Todos Tab
@@ -30,7 +38,7 @@
 
   * Powered by Convex database
 
-🧠 What You’ll Learn
+🧠 What I Learned
 
 * 🏗️ Build a mobile app using React Native + Expo
 
