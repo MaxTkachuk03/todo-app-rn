@@ -22,10 +22,7 @@ export const addTodo = mutation({
 });
 
 export const toggleTodo = mutation({
-  args: {
-    todoId: v.id("todos"),
-    isCompleted: v.boolean(),
-  },
+  args: { todoId: v.id("todos") },
   handler: async (context, args) => {
     const todo = await context.db.get(args.todoId);
     if (!todo) throw new ConvexError("Todo not found");
