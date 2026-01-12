@@ -1,28 +1,29 @@
+import { createHomeStyles } from "@/assets/styles/home.styles";
+import Header from "@/components/Header";
 import useTheme from "@/hooks/useTheme";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Index() {
-  const { toggleTheme } = useTheme();
+export default function HomePage() {
+  const { toggleTheme, theme } = useTheme();
+  const homeStyles = createHomeStyles(theme);
 
   return (
-    <View style={styles.container}>
-      <Text>Edit app/index.tsx to edit this screen. 123</Text>
-      <TouchableOpacity onPress={() => toggleTheme()}>
-        <Text> Toggle theme</Text>
-      </TouchableOpacity>
-    </View>
+    <LinearGradient
+      colors={theme.gradients.background}
+      style={homeStyles.container}
+    >
+      <StatusBar
+        barStyle={theme.statusBarStyle}
+      />
+      <SafeAreaView style={homeStyles.safeArea}>
+        <Header />
+        <Text>Edit app/index.tsx to edit this screen. 123</Text>
+        <TouchableOpacity onPress={() => toggleTheme()}>
+          <Text> Toggle theme</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, // in mobile, mean take full height in column direction
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  link: {
-    marginTop: 20,
-    fontSize: 32,
-    color: "blue",
-  },
-});
