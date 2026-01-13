@@ -1,8 +1,8 @@
 import { createHomeStyles } from "@/assets/styles/home.styles";
 import ActionButton from "@/components/ActionButton";
-import Header from "@/components/Header";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import TodoInput from "@/components/TodoInput";
+import Header from "@/components/Home/Header";
+import LoadingSpinner from "@/components/Home/LoadingSpinner";
+import TodoInput from "@/components/Home/TodoInput";
 import { api } from "@/convex/_generated/api";
 import { Doc, Id } from "@/convex/_generated/dataModel";
 import useTheme from "@/hooks/useTheme";
@@ -20,7 +20,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import EmptyListComponent from "../../components/EmptyListComponent/index";
+import EmptyListComponent from "../../components/Home/EmptyListComponent/index";
 
 type Todo = Doc<"todos">;
 type TodoId = Id<"todos">;
@@ -72,7 +72,14 @@ export default function HomePage() {
       {
         text: "Delete",
         style: "destructive",
-        onPress: () => deleteTodo({ id }),
+        onPress: async () => {
+          try {
+            await deleteTodo({ id });
+          } catch (error) {
+            console.log("Error deleting todo:", error);
+            Alert.alert("Error", "Failed to delete todo. Please try again.");
+          }
+        },
       },
     ]);
   };

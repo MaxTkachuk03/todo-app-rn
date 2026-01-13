@@ -182,7 +182,7 @@ export const createHomeStyles = (theme: ColorScheme) => {
       borderWidth: 2,
       borderRadius: 16,
       paddingHorizontal: 16,
-      paddingVertical: 12,
+      paddingVertical: 6,
       fontSize: 17,
       fontWeight: "500",
       marginBottom: 16,
